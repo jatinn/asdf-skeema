@@ -59,7 +59,7 @@ download_release_asset() {
 	fi
 	# use `amd64` instead of `x86_64` arch
 	if [ "$arch" == "x86_64" ]; then
-		platform="amd64"
+		arch="amd64"
 	fi
 
 	url="$GH_REPO/releases/download/v${version}/${TOOL_NAME}_${version}_${platform}_${arch}.tar.gz"
