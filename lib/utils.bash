@@ -36,13 +36,34 @@ list_all_versions() {
 	list_github_tags
 }
 
-download_release() {
+download_release_source() {
 	local version filename url
 	version="$1"
 	filename="$2"
 
 	# TODO: Adapt the release URL convention for skeema
 	url="$GH_REPO/archive/v${version}.tar.gz"
+
+	echo "* Downloading $TOOL_NAME release $version..."
+	curl "${curl_opts[@]}" -o "$filename" -C - "$url" || fail "Could not download $url"
+}
+
+download_release_asset() {
+	local version filename url
+	version="$1"
+	filename="$2"
+
+	local platform="$(uname | tr '[:upper:]' '[:lower:]')"
+	local arch="$(uname -m)"
+
+	# skeema assets use `mac` as the platform instead of `darwin`
+	# so check and update to build the correct url
+	if [ "$platform" == "darwin" ]; then
+		platform="mac"
+	fi
+
+	# TODO: Adapt the release URL convention for skeema
+	url="$GH_REPO/releases/download/v${version}/${TOOL_NAME}_${version}_${platform}_${arch}.tar.gz"
 
 	echo "* Downloading $TOOL_NAME release $version..."
 	curl "${curl_opts[@]}" -o "$filename" -C - "$url" || fail "Could not download $url"
