@@ -1,3 +1,10 @@
+> [!IMPORTANT]
+> This repository is deprecated.
+>
+> This plugin was originally needed to use this tool with [`mise`](https://mise.jdx.dev/), when it relied on its ability to load `asdf` plugins. However, `mise` now supports other backends that provide access to this tool, making this plugin no longer necessary.
+>
+> This repository is no longer maintained. Users are encouraged to use the alternatives available through [`mise`](https://mise.jdx.dev/) instead.
+
 <div align="center">
 
 # asdf-skeema [![Build](https://github.com/jatinn/asdf-skeema/actions/workflows/build.yml/badge.svg)](https://github.com/jatinn/asdf-skeema/actions/workflows/build.yml) [![Lint](https://github.com/jatinn/asdf-skeema/actions/workflows/lint.yml/badge.svg)](https://github.com/jatinn/asdf-skeema/actions/workflows/lint.yml)
